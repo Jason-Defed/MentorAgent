@@ -11,20 +11,22 @@ import { CheckCircleIcon, XCircleIcon, HelpCircleIcon, BookOpenIcon, TestTubeIco
 
 // Mock data for skills
 const currentSkills = [
-  { name: "JavaScript", level: "Intermediate", status: "verified" },
-  { name: "HTML/CSS", level: "Advanced", status: "verified" },
-  { name: "React", level: "Beginner", status: "verified" },
-  { name: "Git", level: "Intermediate", status: "verified" },
+  { name: "Dify", level: "Senior", status: "verified" },
+  { name: "Zapier", level: "Senior", status: "verified" },
+  { name: "Hugging Face", level: "Senior", status: "verified" },
+  { name: "SQL", level: "Senior", status: "verified" },
+  { name: "Postman", level: "Senior", status: "verified" },
 ]
 
 const requiredSkills = [
-  { name: "JavaScript", level: "Advanced", status: "gap" },
-  { name: "React", level: "Intermediate", status: "gap" },
-  { name: "Node.js", level: "Intermediate", status: "missing" },
-  { name: "SQL", level: "Beginner", status: "missing" },
-  { name: "Git", level: "Intermediate", status: "match" },
-  { name: "HTML/CSS", level: "Advanced", status: "match" },
+  { name: "Low-code Tools", level: "Provide a demo link created using a low-code tool (like Hugging Face/Dify).", status: "gap" },
+  { name: "AI Project", level: "Share a relevant AI project experience (competition/internship).", status: "gap" },
+  { name: "Data Analysis", level: "Take the Mentor Agent's SQL skills test.", status: "missing" },
+  { name: "Business Analysis", level: "Upload a commercialization analysis of a specific AI application (like HIX/c.ai).", status: "missing" },
+  { name: "Prototype Design", level: "Submit the link to your product prototype design (such as Figma).", status: "match" },
+  { name: "Learning and Information Management", level: "Complete Mentor Agent's latest industry news and encyclopedia test.", status: "match" },
 ]
+
 
 export default function ResumeComparisonPage() {
   const router = useRouter()
@@ -88,7 +90,7 @@ export default function ResumeComparisonPage() {
         <div className="lg:col-span-2">
           <Card>
             <CardHeader>
-              <CardTitle>Required Skills for Software Engineer</CardTitle>
+              <CardTitle>Required Skills for AI Product Manager</CardTitle>
               <CardDescription>Compare your current skills with what's required</CardDescription>
             </CardHeader>
             <CardContent>
@@ -119,12 +121,12 @@ export default function ResumeComparisonPage() {
 
           <div className="mt-6">
             <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="confirm">
+              <TabsList className="grid w-full grid-cols-2">
+                {/* <TabsTrigger value="confirm">
                   <BookOpenIcon className="h-4 w-4 mr-2" />
                   <span className="hidden sm:inline">Skill Confirmation</span>
                   <span className="sm:hidden">Confirm</span>
-                </TabsTrigger>
+                </TabsTrigger> */}
                 <TabsTrigger value="test">
                   <TestTubeIcon className="h-4 w-4 mr-2" />
                   <span className="hidden sm:inline">Skill Testing</span>
@@ -148,7 +150,7 @@ export default function ResumeComparisonPage() {
                       <div className="p-4 border rounded-md">
                         <h3 className="font-medium mb-2">Do you have experience with Node.js?</h3>
                         <p className="text-sm text-gray-500 mb-4">
-                          Node.js is required for the Software Engineer position at an Intermediate level.
+                          Node.js is required for the AI Product Manager position at an Intermediate level.
                         </p>
                         <div className="flex gap-2">
                           <Button variant="outline">Yes, I have this skill</Button>
@@ -159,7 +161,7 @@ export default function ResumeComparisonPage() {
                       <div className="p-4 border rounded-md">
                         <h3 className="font-medium mb-2">Do you have experience with SQL?</h3>
                         <p className="text-sm text-gray-500 mb-4">
-                          SQL is required for the Software Engineer position at a Beginner level.
+                          SQL is required for the AI Product Manager position at a Beginner level.
                         </p>
                         <div className="flex gap-2">
                           <Button variant="outline">Yes, I have this skill</Button>
@@ -181,23 +183,22 @@ export default function ResumeComparisonPage() {
                     <div className="space-y-4">
                       <div className="p-4 border rounded-md">
                         <div className="flex justify-between items-start mb-2">
-                          <h3 className="font-medium">JavaScript Assessment</h3>
+                          <h3 className="font-medium">Data Analysis Assessment</h3>
                           <Badge>20 minutes</Badge>
                         </div>
                         <p className="text-sm text-gray-500 mb-4">
-                          Test your JavaScript knowledge to verify your current level and identify areas for
-                          improvement.
+                          You need to complete the extraction and analysis of data from a simulated database within a specified timeframe. 
                         </p>
                         <Button>Start Assessment</Button>
                       </div>
 
                       <div className="p-4 border rounded-md">
                         <div className="flex justify-between items-start mb-2">
-                          <h3 className="font-medium">React Assessment</h3>
+                          <h3 className="font-medium">RInformation Management  Assessment</h3>
                           <Badge>25 minutes</Badge>
                         </div>
                         <p className="text-sm text-gray-500 mb-4">
-                          Evaluate your React skills through practical coding challenges and knowledge questions.
+                        You  need to answer our questions about recent industry trends within the given time.
                         </p>
                         <Button>Start Assessment</Button>
                       </div>
@@ -215,9 +216,9 @@ export default function ResumeComparisonPage() {
                   <CardContent>
                     <div className="space-y-6">
                       <div>
-                        <h3 className="font-medium mb-2">1. Improve JavaScript Skills</h3>
+                        <h3 className="font-medium mb-2">1. Basic Technology Understanding</h3>
                         <p className="text-sm text-gray-500 mb-2">
-                          Advance from Intermediate to Advanced level (4-6 weeks)
+                          Mainstream AI Principles** (NLP/CV/LLM basics) + Low-code tools (1 week)
                         </p>
                         <div className="space-y-2">
                           <div className="p-3 border rounded-md bg-gray-50">
@@ -241,9 +242,9 @@ export default function ResumeComparisonPage() {
                                 </svg>
                               </div>
                               <div>
-                                <p className="font-medium text-sm">Advanced JavaScript Course</p>
+                                <p className="font-medium text-sm">Intro:</p>
                                 <p className="text-xs text-gray-500">
-                                  Online course covering closures, prototypes, and async patterns
+                                  Watch "Understand ChatGPT in 1 Hour" video.
                                 </p>
                               </div>
                             </div>
@@ -269,8 +270,8 @@ export default function ResumeComparisonPage() {
                                 </svg>
                               </div>
                               <div>
-                                <p className="font-medium text-sm">JavaScript Coding Challenges</p>
-                                <p className="text-xs text-gray-500">Complete 20 advanced algorithm challenges</p>
+                                <p className="font-medium text-sm">Practice:</p>
+                                <p className="text-xs text-gray-500">Deploy a text classification demo on Hugging Face Spaces.</p>
                               </div>
                             </div>
                           </div>
@@ -278,8 +279,8 @@ export default function ResumeComparisonPage() {
                       </div>
 
                       <div>
-                        <h3 className="font-medium mb-2">2. Learn Node.js</h3>
-                        <p className="text-sm text-gray-500 mb-2">Achieve Intermediate level (8 weeks)</p>
+                        <h3 className="font-medium mb-2">2. Portfolio Project</h3>
+                        <p className="text-sm text-gray-500 mb-2">Complete a full AI project (2 weeks)</p>
                         <div className="space-y-2">
                           <div className="p-3 border rounded-md bg-gray-50">
                             <div className="flex items-start gap-2">
@@ -302,9 +303,9 @@ export default function ResumeComparisonPage() {
                                 </svg>
                               </div>
                               <div>
-                                <p className="font-medium text-sm">Node.js Fundamentals</p>
+                                <p className="font-medium text-sm">Topic Selection:</p>
                                 <p className="text-xs text-gray-500">
-                                  Learn core concepts and build simple applications
+                                  Find a simple dataset on Kaggle (e.g., movie review classification).
                                 </p>
                               </div>
                             </div>
@@ -330,9 +331,9 @@ export default function ResumeComparisonPage() {
                                 </svg>
                               </div>
                               <div>
-                                <p className="font-medium text-sm">Build a REST API with Express</p>
+                                <p className="font-medium text-sm">Execution:</p>
                                 <p className="text-xs text-gray-500">
-                                  Create a complete backend application with database integration
+                                  Use an AutoML tool (like Google Vertex AI) to train a model and generate a report.
                                 </p>
                               </div>
                             </div>
@@ -341,8 +342,8 @@ export default function ResumeComparisonPage() {
                       </div>
 
                       <div>
-                        <h3 className="font-medium mb-2">3. Learn SQL Basics</h3>
-                        <p className="text-sm text-gray-500 mb-2">Achieve Beginner level (4 weeks)</p>
+                        <h3 className="font-medium mb-2">3. Data Analysis Skills</h3>
+                        <p className="text-sm text-gray-500 mb-2">SQL + Basic Data Processing (1-2 weeks)</p>
                         <div className="space-y-2">
                           <div className="p-3 border rounded-md bg-gray-50">
                             <div className="flex items-start gap-2">
@@ -365,9 +366,9 @@ export default function ResumeComparisonPage() {
                                 </svg>
                               </div>
                               <div>
-                                <p className="font-medium text-sm">SQL Fundamentals Course</p>
+                                <p className="font-medium text-sm">SQL:</p>
                                 <p className="text-xs text-gray-500">
-                                  Learn basic queries, database design, and CRUD operations
+                                  Practice using "SQLZoo" online exercises.
                                 </p>
                               </div>
                             </div>
@@ -393,9 +394,195 @@ export default function ResumeComparisonPage() {
                                 </svg>
                               </div>
                               <div>
-                                <p className="font-medium text-sm">Database Project</p>
+                                <p className="font-medium text-sm">Python:</p>
                                 <p className="text-xs text-gray-500">
-                                  Build a simple database application to practice your skills
+                                  Complete the Kaggle micro-course on "Pandas for data processing."
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="font-medium mb-2">4. Commercial Analysis</h3>
+                        <p className="text-sm text-gray-500 mb-2">AI product business model analysis (3 days)</p>
+                        <div className="space-y-2">
+                          <div className="p-3 border rounded-md bg-gray-50">
+                            <div className="flex items-start gap-2">
+                              <div className="mt-0.5">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="text-teal-600"
+                                >
+                                  <path d="M12 9h.01"></path>
+                                  <path d="M11 12h1v4h1"></path>
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                </svg>
+                              </div>
+                              <div>
+                                <p className="font-medium text-sm">Case Study:</p>
+                                <p className="text-xs text-gray-500">
+                                  Analyze Hix and c.ai's pricing strategies and commercialization plans.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="p-3 border rounded-md bg-gray-50">
+                            <div className="flex items-start gap-2">
+                              <div className="mt-0.5">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="text-teal-600"
+                                >
+                                  <path d="M12 9h.01"></path>
+                                  <path d="M11 12h1v4h1"></path>
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                </svg>
+                              </div>
+                              <div>
+                                <p className="font-medium text-sm">Output:</p>
+                                <p className="text-xs text-gray-500">
+                                  Create a 1-page PPT with a comparative analysis (using a business model canvas template).
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="font-medium mb-2">5. Prototype Design Experience</h3>
+                        <p className="text-sm text-gray-500 mb-2">Product prototype design + Prompt engineering (3 days)</p>
+                        <div className="space-y-2">
+                          <div className="p-3 border rounded-md bg-gray-50">
+                            <div className="flex items-start gap-2">
+                              <div className="mt-0.5">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="text-teal-600"
+                                >
+                                  <path d="M12 9h.01"></path>
+                                  <path d="M11 12h1v4h1"></path>
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                </svg>
+                              </div>
+                              <div>
+                                <p className="font-medium text-sm">Figma:</p>
+                                <p className="text-xs text-gray-500">
+                                  Start with "Figma: From Beginner to Expert" video.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="p-3 border rounded-md bg-gray-50">
+                            <div className="flex items-start gap-2">
+                              <div className="mt-0.5">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="text-teal-600"
+                                >
+                                  <path d="M12 9h.01"></path>
+                                  <path d="M11 12h1v4h1"></path>
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                </svg>
+                              </div>
+                              <div>
+                                <p className="font-medium text-sm">Prompt:</p>
+                                <p className="text-xs text-gray-500">
+                                  Follow OpenAI's official prompt design guide (1 day) and write 10 examples yourself.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="font-medium mb-2">6. Self-driven Learning</h3>
+                        <p className="text-sm text-gray-500 mb-2">Establish learning habits (3 hours per week)</p>
+                        <div className="space-y-2">
+                          <div className="p-3 border rounded-md bg-gray-50">
+                            <div className="flex items-start gap-2">
+                              <div className="mt-0.5">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="text-teal-600"
+                                >
+                                  <path d="M12 9h.01"></path>
+                                  <path d="M11 12h1v4h1"></path>
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                </svg>
+                              </div>
+                              <div>
+                                <p className="font-medium text-sm">Subscribe:</p>
+                                <p className="text-xs text-gray-500">
+                                  To "The Batch" (AI weekly) and "GeekTime AI Column" (ongoing).
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="p-3 border rounded-md bg-gray-50">
+                            <div className="flex items-start gap-2">
+                              <div className="mt-0.5">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="text-teal-600"
+                                >
+                                  <path d="M12 9h.01"></path>
+                                  <path d="M11 12h1v4h1"></path>
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                </svg>
+                              </div>
+                              <div>
+                                <p className="font-medium text-sm">Course:</p>
+                                <p className="text-xs text-gray-500">
+                                  Complete "AI For Everyone" on Coursera (Andrew Ng, 6 hours).
                                 </p>
                               </div>
                             </div>

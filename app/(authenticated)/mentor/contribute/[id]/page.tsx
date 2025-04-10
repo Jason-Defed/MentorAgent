@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { SendIcon, PlusIcon, XIcon } from "lucide-react"
+import { initContract, contract } from "../../../../../contract/contract"
 
 export default function ContributePage({ params }: { params: { id: string } }) {
   const router = useRouter()
@@ -16,22 +17,39 @@ export default function ContributePage({ params }: { params: { id: string } }) {
   const [files, setFiles] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [contributionValue, setContributionValue] = useState<number | null>(null)
+  const [isCalculateLoading, setIsCalculateLoading] = useState(false)
 
-  // Mock position data based on ID
   const positionTitle =
     params.id === "1"
-      ? "Software Engineer"
+      ? "AI Product Manager"
       : params.id === "2"
-        ? "Data Scientist"
+        ? "Software Engineer"
         : params.id === "3"
-          ? "Product Manager"
+          ? "Data Scientist"
           : params.id === "4"
-            ? "DevOps Engineer"
+            ? "Product Manager"
             : params.id === "5"
-              ? "Mobile Developer"
+              ? "DevOps Engineer"
               : params.id === "6"
-                ? "UX Researcher"
-                : "Selected Position"
+                ? "Mobile Developer"
+                : params.id === "7"
+                  ? "UX Researcher"
+                  : "Selected Position"
+  // const positionTitle =
+  //   params.id === "1"
+  //     ? "Software Engineer"
+  //     : params.id === "2"
+  //       ? "Data Scientist"
+  //       : params.id === "3"
+  //         ? "Product Manager"
+  //         : params.id === "4"
+  //           ? "DevOps Engineer"
+  //           : params.id === "5"
+  //             ? "Mobile Developer"
+  //             : params.id === "6"
+  //               ? "UX Researcher"
+  //               : "Selected Position"
+              
 
   // Mock questions for the position
   const questions = [
@@ -48,12 +66,20 @@ export default function ContributePage({ params }: { params: { id: string } }) {
     setAnswers(newAnswers)
   }
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
     } else {
       // Calculate contribution value based on answers
-      calculateContributionValue()
+      try {
+        setIsCalculateLoading(true)
+        await new Promise((resolve) => setTimeout(resolve, 3000))
+        setIsCalculateLoading(false)
+        calculateContributionValue()
+      } catch (error) {
+        setIsCalculateLoading(false)
+        calculateContributionValue()
+      }
     }
   }
 
@@ -83,14 +109,27 @@ export default function ContributePage({ params }: { params: { id: string } }) {
     const lengthBonus = Math.floor(totalLength / 100) * 5
     const filesBonus = files.length * 10
 
-    setContributionValue(baseValue + lengthBonus + filesBonus)
+    setContributionValue(20)
   }
+
+  useEffect(() => {
+    initContract();
+  }, []);
+
+  const updateAgentContributors = async (agentId: number, updatedContributors: any[]) => {
+    try {
+        const tx = await contract.updateAgentContributors(agentId, updatedContributors);
+        await tx.wait();
+        console.log("Agent contributors updated:", tx);
+    } catch (error) {
+        console.error("Error updating agent contributors:", error);
+    }
+  };
 
   const handleSubmit = async () => {
     setIsSubmitting(true)
 
     try {
-      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 2000))
       router.push("/mentor/dashboard")
     } catch (error) {
@@ -165,6 +204,7 @@ export default function ContributePage({ params }: { params: { id: string } }) {
                 </Button>
                 <Button
                   onClick={handleNext}
+                  isLoading={isCalculateLoading}
                   disabled={!answers[currentQuestion].trim()}
                   className="bg-teal-600 hover:bg-teal-700"
                 >
@@ -175,8 +215,9 @@ export default function ContributePage({ params }: { params: { id: string } }) {
           ) : (
             <div className="space-y-6">
               <div className="p-6 border rounded-md bg-teal-50 text-center">
-                <h3 className="text-2xl font-bold text-teal-800 mb-2">Contribution Value</h3>
-                <p className="text-4xl font-bold text-teal-600 mb-4">{contributionValue} EDU</p>
+                <h3 className="text-2xl font-bold text-teal-800 mb-2">Contribution</h3>
+                {/* <p className="text-4xl font-bold text-teal-600 mb-4">{contributionValue} EDU</p> */}
+                <p className="text-4xl font-bold text-teal-600 mb-4">{contributionValue}%</p>
                 <p className="text-sm text-teal-700">
                   Your contribution has been assessed based on the quality and depth of your answers.
                 </p>
@@ -194,15 +235,16 @@ export default function ContributePage({ params }: { params: { id: string } }) {
                     <span>Supporting Materials</span>
                     <span className="font-medium">{files.length} files</span>
                   </div>
-                  <div className="flex justify-between p-2 border-b">
+                  {/* <div className="flex justify-between p-2 border-b">
                     <span>Detail Level</span>
                     <span className="font-medium">
                       {answers.reduce((sum, answer) => sum + answer.length, 0) > 1000 ? "High" : "Medium"}
                     </span>
-                  </div>
+                  </div> */}
                   <div className="flex justify-between p-2">
                     <span className="font-medium">Total Value</span>
-                    <span className="font-bold text-teal-600">{contributionValue} EDU</span>
+                    {/* <span className="font-bold text-teal-600">{contributionValue} EDU</span> */}
+                    <span className="font-bold text-teal-600">{contributionValue}%</span>
                   </div>
                 </div>
               </div>

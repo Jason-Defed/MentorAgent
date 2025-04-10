@@ -8,24 +8,32 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { PlusIcon, BriefcaseIcon, CoinsIcon, UsersIcon } from "lucide-react"
 
-// Mock data for mentor dashboard
+
+// data for mentor dashboard
 const contributedPositions = [
   {
     id: "1",
+    title: "AI Product Manager",
+    contributions: 1,
+    earnings: 0.1,
+    lastUpdated: "1 days ago",
+  },
+  {
+    id: "2",
     title: "Software Engineer",
     contributions: 12,
     earnings: 450,
     lastUpdated: "2 days ago",
   },
   {
-    id: "2",
+    id: "3",
     title: "Data Scientist",
     contributions: 8,
     earnings: 320,
     lastUpdated: "1 week ago",
   },
   {
-    id: "3",
+    id: "4",
     title: "Product Manager",
     contributions: 5,
     earnings: 200,
@@ -35,19 +43,19 @@ const contributedPositions = [
 
 const opportunityPositions = [
   {
-    id: "4",
+    id: "5",
     title: "DevOps Engineer",
     demand: "High",
     estimatedEarnings: "80-120 EDU",
   },
   {
-    id: "5",
+    id: "6",
     title: "Mobile Developer",
     demand: "Medium",
     estimatedEarnings: "60-100 EDU",
   },
   {
-    id: "6",
+    id: "7",
     title: "UX Researcher",
     demand: "Medium",
     estimatedEarnings: "50-90 EDU",
@@ -55,7 +63,7 @@ const opportunityPositions = [
 ]
 
 export default function MentorDashboardPage() {
-  const [activeTab, setActiveTab] = useState("positions")
+  const [activeTab, setActiveTab] = useState("opportunities")
 
   return (
     <div className="container px-4 py-8 md:py-12 mx-auto">
@@ -81,7 +89,7 @@ export default function MentorDashboardPage() {
               </div>
               <div>
                 <p className="text-sm text-gray-500">Positions</p>
-                <p className="text-2xl font-bold">3</p>
+                <p className="text-2xl font-bold">4</p>
               </div>
             </div>
           </CardContent>
@@ -95,7 +103,7 @@ export default function MentorDashboardPage() {
               </div>
               <div>
                 <p className="text-sm text-gray-500">Total Earnings</p>
-                <p className="text-2xl font-bold">970 EDU</p>
+                <p className="text-2xl font-bold">970.1 EDU</p>
               </div>
             </div>
           </CardContent>
@@ -138,9 +146,6 @@ export default function MentorDashboardPage() {
                     </div>
                   </div>
                   <div className="flex gap-2 self-start md:self-center">
-                    <Link href={`/mentor/position/${position.id}`}>
-                      <Button variant="outline">View Details</Button>
-                    </Link>
                     <Link href={`/mentor/contribute/${position.id}`}>
                       <Button className="bg-teal-600 hover:bg-teal-700">Contribute More</Button>
                     </Link>

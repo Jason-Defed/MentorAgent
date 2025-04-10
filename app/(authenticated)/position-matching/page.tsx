@@ -12,9 +12,22 @@ import { PositionCard } from "@/components/position-card"
 import { PositionDetail } from "@/components/position-detail"
 
 // Mock data for positions
-const mockPositions = [
+const dataPositions = [
   {
     id: "1",
+    title: "AI Product Manager",
+    country: "United States",
+    salaryRange: "$90,000 - $120,000",
+    matchPercentage: 95,
+    difficulty: 4,
+    description:
+      "AI PMs bridge technology and business, transforming AI capabilities into market-ready products. They: Identify high-value AI use cases\n\n Validate solutions using low-code tools (AutoML/Dify)\n\n Design monetization strategies (API/SaaS/enterprise solutions)\n\n Drive cross-functional execution (engineering, data, GTM)",
+    skills: ["Dify", "Zapier", "Hugging Face", "SQL", "Postman"],
+    outlook:
+      "📈 High Demand – 40%+ growth in AI PM roles (2024)\n\n💰 Premium Compensation – 30-50% salary premium vs traditional PM\n\n🚀 Career Paths:\n\nVertical: Senior AI PM → AI Product Lead → VP AI Products\n\nLateral: AI strategy consulting/VC\n\nThe most valuable AI PMs speak both Python and Profit & Loss.",
+  },
+  {
+    id: "2",
     title: "Software Engineer",
     country: "United States",
     salaryRange: "$90,000 - $120,000",
@@ -27,7 +40,7 @@ const mockPositions = [
       "The demand for software engineers continues to grow across industries as digital transformation accelerates. Job security is high with numerous advancement opportunities.",
   },
   {
-    id: "2",
+    id: "3",
     title: "Data Scientist",
     country: "United States",
     salaryRange: "$95,000 - $130,000",
@@ -40,7 +53,7 @@ const mockPositions = [
       "Data science roles are projected to grow significantly as companies increasingly rely on data-driven decision making. Specialized knowledge in specific domains can increase marketability.",
   },
   {
-    id: "3",
+    id: "4",
     title: "UX/UI Designer",
     country: "Canada",
     salaryRange: "$75,000 - $100,000",
@@ -53,7 +66,7 @@ const mockPositions = [
       "As companies focus more on user experience, demand for UX/UI designers continues to grow. Remote work opportunities are abundant in this field.",
   },
   {
-    id: "4",
+    id: "5",
     title: "Product Manager",
     country: "United Kingdom",
     salaryRange: "£60,000 - £85,000",
@@ -66,7 +79,7 @@ const mockPositions = [
       "Product management roles are in high demand as companies seek to improve their product development processes. Experience in specific industries can be valuable.",
   },
   {
-    id: "5",
+    id: "6",
     title: "Blockchain Developer",
     country: "Singapore",
     salaryRange: "S$90,000 - S$140,000",
@@ -82,7 +95,7 @@ const mockPositions = [
 
 export default function PositionMatchingPage() {
   const router = useRouter()
-  const [positions, setPositions] = useState(mockPositions)
+  const [positions, setPositions] = useState(dataPositions)
   const [selectedPosition, setSelectedPosition] = useState<string | null>(null)
   const [filters, setFilters] = useState({
     country: "all",
@@ -93,7 +106,7 @@ export default function PositionMatchingPage() {
   // Simulate loading positions
   useEffect(() => {
     const timer = setTimeout(() => {
-      setPositions(mockPositions)
+      setPositions(dataPositions)
     }, 1000)
 
     return () => clearTimeout(timer)
